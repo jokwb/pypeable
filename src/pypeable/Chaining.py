@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from math import sqrt
 from sys import _getframe
 from types import BuiltinFunctionType, FunctionType
 from typing import Any, Callable
@@ -99,6 +98,7 @@ class C:
 
 if __name__ == "__main__":
     import re
+    from math import sqrt
 
     def fn1(a: int, b: int) -> int:
         return a + b
@@ -119,12 +119,12 @@ if __name__ == "__main__":
         return int(d)
 
     result = (
-        C(lazy=True)
+        C(lazy=False)
         .fn1(2, 5)
         .fn2()
         .fn3()
         .fn4["second_argument"](4)
-        .fn5(-1)
+        .fn5(pos=-1)
         .fn6()
         .sqrt()
         .unwrap()
